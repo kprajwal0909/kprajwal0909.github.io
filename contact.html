@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Van Holtz - Web Developer, Programmer </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar sidebarGo">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/intro.html">My Intro</a></li>
+                    <li><a href="/projects.html">Services</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/contact.html">Contact Me</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="hamburger">
+                <img class="ham" src="menu.png" alt=" ">
+                <img class="cross" src="close.png" alt=" ">
+            </div>
+            <div class="contactform"></div>
+                <h1 style="font-family: 'Source Code Pro', monospace;padding: 30px 30px 0px 30px;margin:45px 88px;margin-bottom: 25px;">Contact me for work/general Enquiries</h1>
+                <form style="padding: 0px 30px 0px 30px;font-family:'Fira Sans', sans-serif;font-size: 25px;margin: 0 0 0 88px;">
+                    <div class="form-group" style="display: flex;flex-direction: column;">
+                        <label for="clientname">Name</label>
+                        <input type="text" class="form-control" id="clientname"  style="width: 33vw;
+                        border-radius: 5px;font-size: .875rem; padding: 3px;margin: 6px 0;" >
+                    </div>
+                    <div class="form-group" style="display: flex;flex-direction: column;">
+                        <label for="clientemail">Email address</label>
+                        <input type="email" class="form-control" id="clientemail" aria-describedby="emailHelp" style="width: 33vw;
+                        border-radius: 5px;font-size: .875rem; padding: 3px;margin: 6px 0;" >
+                        <div id="emailHelp" class="form-text text-muted" style="margin: 1px;font-size: 10px;">We'll never share your email & phone with anyone else.</div>
+                    </div>
+                <div class="form-group" style="padding:0px 0;display: flex;flex-direction: column;">
+                    <label for="clientphone">Phone</label>
+                    <input type="password" class="form-control" id="clientphone" style="width: 33vw;
+                    border-radius: 5px;font-size: .875rem; padding: 3px;margin: 6px 0 0 0">
+                </div>
+                <div class="form-group" style="padding:15px 0;display: flex;flex-direction: column;">
+                    <label for="clientenquiry">Enquiry</label>
+                    <input type="text" class="form-control" id="clientenquiry" style="width: 33vw;
+                    border-radius: 5px;font-size: .875rem; padding: 3px;margin: 6px 0 0 0">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="isclient">
+                    <label class="form-check-label" for="isclient" style="margin: -4px;font-size: 18px;">I want you to work on a project with me</label>
+                </div>
+                <div class="buttons" style="margin-top: 5px;">
+                <button type="submit" class="btn btn-primary" style="flex-direction: column;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="hero">
+        <h2>For More<br>Updates</h2>
+        <p>Subscribe for more details</p>
+        <form name="submit-to-google-sheet">
+            <input type="email" name="Email" placeholder="Your email id" required>
+            <button type="submit"><img src="send-icon.png" width="30px"></button>
+        </form>
+        <span id="msg"></span>
+    </div>
+    <script src="script.js"></script>
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzOP7B-1kHbYS8YWXjAoSBFGENpXSkHoz0xYZPBXo_1U6E8VPzxWaS17o8EjGqT2yid/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Thank You For Subscribing!"
+                setTimeout(function(){
+                msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
