@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Source+Code+Pro:wght@300&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -279,7 +278,6 @@
     font-family:'Fira Sans', sans-serif;
 }
     
-
 @media (max-width:1262px ) {
      *{
         background-color: rgb(255, 255, 255);
@@ -297,5 +295,4 @@
     .buttons {
         font-size: 6px;
     }
-    
 }
